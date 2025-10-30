@@ -1,5 +1,7 @@
 # Интерактивный визуализатор матричных операций
+
 Описание проекта
+
 Студенты технических специальностей ежедневно сталкиваются с задачами по линейной алгебре: умножение матриц, вычисление определителей, решение СЛАУ методом Гаусса. Обычно на это уходит 20-30 минут, а риск допустить арифметическую ошибку достигает 30-40% - результат всей работы оказывается неверным. Существующие бесплатные калькуляторы либо не показывают промежуточные шаги, либо не дают текстовых пояснений к каждому преобразованию, а подписка на платные сервисы (Wolfram Alpha Pro) стоит 707 руб./месяц.
 
 Решение
@@ -34,7 +36,9 @@
 
 
 # Interactive Matrix Operations Vizualizer
+
 Project description
+
 Students of technical specialties face daily challenges with linear algebra: matrix multiplication, determinant calculation, solving systems of linear equations using Gaussian elimination. This typically takes 20-30 minutes, with a 30-40% risk of arithmetic errors that invalidate the entire solution. Existing free calculators either don't show intermediate steps or lack textual explanations for each transformation, while paid services (Wolfram Alpha Pro) cost 10$/month.
 
 Solution
