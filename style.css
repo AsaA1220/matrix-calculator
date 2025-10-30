@@ -7,7 +7,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
     line-height: 1.6;
     background-color: #f4f4f4;
-    padding: 20px;
+    padding: 20 px;
 }
 h1 {
     color: black;
@@ -15,4 +15,7 @@ h1 {
 }
 h2 {
     color: cadetblue;
+}
+.operations button {
+  margin: 5 px;
 }
