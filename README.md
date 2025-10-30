@@ -31,3 +31,38 @@
 - MathJax - отображение математических формул.
 
 Инструменты разработки: Visual Studio Code, Git и GitHub для управления кодом, Google Chrome для тестирования, Draw.io для построения блок-схем алгоритмов.
+
+
+# Interactive Matrix Operations Vizualizer
+Project description
+Students of technical specialties face daily challenges with linear algebra: matrix multiplication, determinant calculation, solving systems of linear equations using Gaussian elimination. This typically takes 20-30 minutes, with a 30-40% risk of arithmetic errors that invalidate the entire solution. Existing free calculators either don't show intermediate steps or lack textual explanations for each transformation, while paid services (Wolfram Alpha Pro) cost 10$/month.
+
+Solution
+
+A free web calculator that doesn't just provide results but shows each calculation step with explanations of what's happening.
+ 
+Main matrix operations:
+
+- matrix addition and subtraction;
+- scalar multiplication;
+- matrix multiplication;
+- transposition;
+- determinant calculation;
+- inverse matrix calculation;
+- matrix rank calculation.
+
+Solving systems of linear equations:
+
+- Gaussian elimination with step-by-step visualization;
+- solution type determination (unique/infinitely many/no solutions);
+- textual explanations for each step;
+- solution verification by substitution.
+
+Technologies and tools:
+
+- HTML5;
+- CSS3;
+- JavaScript (ES6+);
+- MathJax.
+
+Development tools: Visual Studio Code, Git and GitHub for version control, Google Chrome for testing, Draw.io for algorithm flowcharts.
