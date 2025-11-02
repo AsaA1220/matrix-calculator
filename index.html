@@ -3,24 +3,32 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Калькулятор матриц</title>
+    <title>Интерактивный визуализатор матричных операций</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="container">
       <h1>Калькулятор матриц</h1>
 
-      <div class="matrix-input">
+      <div class="input-section">
         <h2>Размер матрицы</h2>
+        <label>Строки: <input type="number" id="rows" value="2" min="1" max="10"></label>
+        <label>Столбцы: <input type="number" id="cols" value="2" min="1" max="10"></label>
+        <button onclick="createMatrix()">Создать матрицу</button>
       </div>
-      <div id="matrix-contaimer"></div>
-      
-      <div class="operations"></div>
-      <h2>Операции</h2>
-      <button>Сложить</button>
-      <button>Умножить</button>
-      <button>Определить</button>
-      <div class="result"></div>
+          
+      <div id="matrix-container"></div>
+          
+      <div class="operations">
+        <h2>Операции</h2>
+        <button>Сложить</button>
+        <button>Умножить</button>
+        <button>Определитель</button>
+      </div>
+    
+      <div id="result"></div>
+      </div>
+          
       <script src="script.js"></script>
   </body>
 </html>
