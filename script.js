@@ -6,6 +6,10 @@ function createMatrix() {
     alert('Размер матрицы должен быть оь 1 до 10');
     return;
   }
-  const container
+  const container = document.getElementById('matrix-container');
+  container.innerHTML = '';
+  const table = document.createElement('table');
+  table.className = 'matrix-table';
+  
 }
 
