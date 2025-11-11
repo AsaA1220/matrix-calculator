@@ -7,7 +7,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
     line-height: 1.6;
     background-color: #f4f4f4;
-    padding: 20 px;
+    padding: 20px;
 }
 h1 {
     color: black;
@@ -17,7 +17,7 @@ h2 {
     color: cadetblue;
 }
 .operations button {
-  margin: 5 px;
+  margin: 5px;
 }
 .matrix-table {
     margin: 20px auto;
@@ -25,4 +25,18 @@ h2 {
 }
 .matrix-table td {
     padding: 5px;
+}
+.matrix-table input {
+    width: 60px;
+    height: 40px;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    border: 2px solid#fffdfd;
+    border-radius: 4px;
+}
+.matrix-table inpit:focus {
+    outline: none;
+    border-color: #3bd040;
+    background-color: #f5fff5;
 }

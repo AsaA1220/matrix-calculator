@@ -9,27 +9,37 @@
   <body>
     <div class="container">
       <h1>Калькулятор матриц</h1>
-
+      <!--Ввод размера первой матрицы-->
+      <div class="instr">
+        <p><strong>Инструкция:</strong>Введите размер матрицы, нажмите "создать", заполните ячейки и выберите операцию</p>
+      </div>
       <div class="input-section">
-        <h2>Размер матрицы</h2>
+        <h2>Матрица 1</h2>
         <label>Строки: <input type="number" id="rows" value="2" min="1" max="10"></label>
         <label>Столбцы: <input type="number" id="cols" value="2" min="1" max="10"></label>
-        <button onclick="createMatrix()">Создать матрицу</button>
+        <button onclick="createMatrix()">Создать матрицу 1</button>
       </div>
-          
+
       <div id="matrix-container"></div>
-          
+
       <!--Тест-->
       <div class="operations">
         <h2>Операции</h2>
-        <button>Сложить</button>
-        <button>Умножить</button>
-        <button>Определитель</button>
+        <button onclick="transpose()">Транспонирвать 1</button>
+        <button onclick="multiply()">Умножить 1 на число</button>
+        <button onclick="calculate()">Определитель 1</button>
       </div>
-    
-      <div id="result"></div>
+      <div id="result">
+        <h2>Результат</h2>
+        <div id="result-output"></div>
       </div>
-          
-      <script src="script.js"></script>
+    </div>
+    <!--Информаиця о проекте-->
+    <footer class="info">
+      <h3>О проекте</h3>
+      <p>Этот калькулятор помогает студентам выполнять операции с матрицами быстро и без ошибок</p>
+      <p>Автор: AsaA1220 | <a href="https://github.com/AsaA1220/matrix-calculator" target="_blank">GitHub</a></p>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
