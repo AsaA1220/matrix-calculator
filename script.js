@@ -78,7 +78,21 @@ function transposeMatrix1(){
 }
 //Умножение
 function multiplyByNumber() {
-  const mat = getMat();
+  const mat = getMat(1);
   if (!mat) return;
   const num = parseFloat(prompt('Введите число для умножения:'));
+  if (isNaN(num)){
+    alert('Некорректное число');
+    return;
+}
+//Умножение каждого элемента
+let resMat = [];
+  for (let i - 0; i < mat.length; i++) {
+    let r = [];
+  for (let j = 0; j < mat[i].length; j++) {
+    r.push(mat[i][j] * num);
+  }
+    resMat.push(r);
+  }
+  showRes(resMat);
 }
