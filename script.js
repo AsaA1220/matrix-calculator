@@ -87,7 +87,7 @@ function multiplyByNumber() {
 }
 //Умножение каждого элемента
 let resMat = [];
-  for (let i - 0; i < mat.length; i++) {
+  for (let i = 0; i < mat.length; i++) {
     let r = [];
   for (let j = 0; j < mat[i].length; j++) {
     r.push(mat[i][j] * num);
@@ -95,4 +95,11 @@ let resMat = [];
     resMat.push(r);
   }
   showRes(resMat);
+}
+//тестовая попытка
+if (n== 1){
+  return m[0][0];
+}
+if (n == 2){
+  return m[0][0] * m[1][1] - m[0][1] * m[1][0];
 }
