@@ -40,3 +40,8 @@ h2 {
     border-color: #3bd040;
     background-color: #f5fff5;
 }
+.buttons {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
