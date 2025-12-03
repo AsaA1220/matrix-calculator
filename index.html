@@ -15,26 +15,30 @@
       </div>
 
       <div class="input-section">
-        <h2>Шаг 1: Создание матрицы 1</h2>
+        <h2>Шаг 1: Создание матрицы</h2>
         <label>Строки: <input type="number" id="rows" value="3" min="1" max="10"></label>
         <label>Столбцы: <input type="number" id="cols" value="3" min="1" max="10"></label>
-        <button onclick="createMatrix()">Создать матрицу 1</button>
+        <button onclick="create_matrix()">Создать матрицу</button>
         <button onclick="Clear()">Очистить все</button>
       </div>
 
       <div id="matrix-container"></div>
 
       <div class="operations">
-        <h2>Выберите операцию</h2>
+        <h2>Шаг 2: Выберите операцию</h2>
 
-        <h3>Операции</h3>
-        <button onclick="add()">Сложить матрицы 1</button>
-        <button onclick="subtract()">Вычесть матрицы 1</button>
-        <button onclick="transposeMatrix()">Транспонирование 1</button>
-        <button onclick="multiply()">Умножить матрицы 1</button>
-        <button onclick="multiplybyscalar()">Умножить на число</button>
-        <button onclick="calculateDeterminant()">Вычислить определитель 1</button>
+        <h3>Базовые операции</h3>
+        <button onclick="add()">Сложить две матрицы</button>
+        <button onclick="subtract()">Вычесть матрицы</button>
+        <button onclick="transpose_matrix()">Транспонирование</button>
+        <button onclick="multiply()">Умножить матрицы</button>
+        <button onclick="multiply_by_scalar()">Умножить на число</button>
+        
+        
+
+        <h3>Вычисления:</h3>
         <button onclick="Rank()">Найти ранг матрицы</button>
+        <button onclick="calculate_determinant()">Вычислить определитель</button>
 
         <h3>Решение систем уравнений:</h3>
         <button onclick="Gauss()">Решить СЛАУ (метод Гаусса)</button>
@@ -47,7 +51,7 @@
       </div>
     </div>
 
-    <!--Информаиця о проекте-->
+
     <footer class="info">
       <h3>О проекте</h3>
       <p>Этот калькулятор помогает студентам выполнять операции с матрицами быстро и без ошибок</p>
