@@ -11,38 +11,49 @@
       <h1>Калькулятор матриц</h1>
       <!--Ввод размера первой матрицы-->
       <div class="instr">
-        <p><strong>Инструкция:</strong>Введите размер матрицы, нажмите "создать", заполните ячейки и выберите операцию</p>
+        <p><strong>Инструкция:</strong>Введите размер матрицы, нажмите "создать", заполните ячейки и выберите нужную операцию</p>
       </div>
+
       <div class="input-section">
-        <h2>Матрица 1</h2>
+        <h2>Шаг 1: Создание матрицы 1</h2>
         <label>Строки: <input type="number" id="rows" value="3" min="1" max="10"></label>
         <label>Столбцы: <input type="number" id="cols" value="3" min="1" max="10"></label>
         <button onclick="createMatrix()">Создать матрицу 1</button>
+        <button onclick="Clear()">Очистить все</button>
       </div>
 
       <div id="matrix-container"></div>
 
       <div class="operations">
-        <h2>Операции</h2>
-        <button onclick="add()">Сложить 1</button>
-        <button onclick="subtract()">Вычесть 1</button>
-        <button onclick="transposeMatrix1()">Транспонирвать 1</button>
-        <button onclick="multiply()">Умножить</button>
-        <button onclick="multiplybyscalar()">Умножить 1 на число</button>
-        <button onclick="calculateDeterminant()">Определитель 1</button>
-        <button onclick="Rank()">Ранг матрицы</button>
+        <h2>Выберите операцию</h2>
+
+        <h3>Операции</h3>
+        <button onclick="add()">Сложить матрицы 1</button>
+        <button onclick="subtract()">Вычесть матрицы 1</button>
+        <button onclick="transposeMatrix()">Транспонирование 1</button>
+        <button onclick="multiply()">Умножить матрицы 1</button>
+        <button onclick="multiplybyscalar()">Умножить на число</button>
+        <button onclick="calculateDeterminant()">Вычислить определитель 1</button>
+        <button onclick="Rank()">Найти ранг матрицы</button>
+
+        <h3>Решение систем уравнений:</h3>
+        <button onclick="Gauss()">Решить СЛАУ (метод Гаусса)</button>
+        <p style="font-size: 12px; color: #666;">Для СЛАУ создайте расширенную матрицу размером n×(n+1)</p>
       </div>
+      
       <div id="result">
         <h2>Результат</h2>
         <div id="result-output"></div>
       </div>
     </div>
+
     <!--Информаиця о проекте-->
     <footer class="info">
       <h3>О проекте</h3>
       <p>Этот калькулятор помогает студентам выполнять операции с матрицами быстро и без ошибок</p>
       <p>Автор: AsaA1220 | <a href="https://github.com/AsaA1220/matrix-calculator" target="_blank">GitHub</a></p>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
