@@ -18,7 +18,7 @@
         <h2>Шаг 1: Создание матрицы</h2>
         <label>Строки: <input type="number" id="rows" value="3" min="1" max="10"></label>
         <label>Столбцы: <input type="number" id="cols" value="3" min="1" max="10"></label>
-        <button onclick="create_matrix()">Создать матрицу</button>
+        <button onclick="createMatrix()">Создать матрицу</button>
         <button onclick="Clear()">Очистить все</button>
       </div>
 
@@ -30,15 +30,15 @@
         <h3>Базовые операции</h3>
         <button onclick="add()">Сложить две матрицы</button>
         <button onclick="subtract()">Вычесть матрицы</button>
-        <button onclick="transpose_matrix()">Транспонирование</button>
+        <button onclick="transposeMatrix()">Транспонирование</button>
         <button onclick="multiply()">Умножить матрицы</button>
-        <button onclick="multiply_by_scalar()">Умножить на число</button>
+        <button onclick="multiplyByScalar()">Умножить на число</button>
         
         
 
         <h3>Вычисления:</h3>
         <button onclick="Rank()">Найти ранг матрицы</button>
-        <button onclick="calculate_determinant()">Вычислить определитель</button>
+        <button onclick="calculateDeterminant()">Вычислить определитель</button>
 
         <h3>Решение систем уравнений:</h3>
         <button onclick="Gauss()">Решить СЛАУ (метод Гаусса)</button>

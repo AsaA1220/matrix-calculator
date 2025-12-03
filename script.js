@@ -197,12 +197,27 @@ for (var i = 0; i < r1; i++){
 showRes(res);
 }
 
+//Вычислить определитель
+function calculateDeterminant(){
+  var mat = getMat();
+  if(!mat) return;
 
+  let rows = mat.length;
+  let cols = mat[0].length;
+
+  if(rows != cols){
+    alert('Только для квадратных матриц!');
+    return;
+  }
+
+  var det = calculateDeterminant(mat);
+  document.getElementById('result-output').innerHTML = '<p style="font-size: 20px;>Вычислить определитель = '+det.toFixed(4)+'</p>';
+}
 
 //тестовая попытка
-if (n== 1){
-  return m[0][0];
-}
-if (n == 2){
-  return m[0][0] * m[1][1] - m[0][1] * m[1][0];
-}
+//if (n== 1){
+  //return m[0][0];
+//}
+//if (n == 2){
+  //return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+//}
