@@ -30,7 +30,6 @@
 - HTML5;
 - CSS3;
 - JavaScript (ES6+);
-- MathJax.
 
 Инструменты разработки: Visual Studio Code, Git и GitHub для управления кодом, Google Chrome для тестирования, Draw.io для построения блок-схем алгоритмов.
 
@@ -67,6 +66,5 @@ Technologies and tools:
 - HTML5;
 - CSS3;
 - JavaScript (ES6+);
-- MathJax.
 
 Development tools: Visual Studio Code, Git and GitHub for version control, Google Chrome for testing, Draw.io for algorithm flowcharts.
