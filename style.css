@@ -1,27 +1,96 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
     padding: 20px;
 }
 
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
 h1 {
-    color: black;
+    color: #333;
     text-align: center;
+    margin-bottom: 10px;
+    font-size: 2em;
 }
 
 h2 {
-    color: cadetblue;
+    color: #667eea;
+    margin-top: 20px;
+     margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+h3 {
+    color: #764ba2;
+    margin-top: 15px;
+    font-size: 1.1em;
 }
 
 .operations button {
-  margin: 5px;
+    margin: 5px;
+}
+
+.instructions {
+    background: #f0f4ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #667eea;
+}
+
+.instructions p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.input-section {
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.input-section label {
+    display: inline-block;
+    margin-right: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.input-section label {
+    display: inline-block;
+    margin-right: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+.input-section input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.input-section input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
 }
 
 .matrix-table {
@@ -44,20 +113,32 @@ h2 {
 }
 
 .matrix-table input:focus {
-  outline: none;
-  border-color: #3bd040;
-  background-color: #f5fff5;
+    outline: none;
+    border-color: #667eea;
+    background-color: #f0f4ff;
+    transform: scale(1.05);
 }
 
-.buttons {
+.button {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
 }
 
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
 #result {
-  margin-top: 20px;
-  padding: 15px;
-  background: white;
-  border-radius: 5px;
+    margin-top: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+    min-height: 100px;
 }
