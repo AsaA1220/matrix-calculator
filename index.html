@@ -19,7 +19,7 @@
         <label>Строки: <input type="number" id="rows" value="3" min="1" max="10"></label>
         <label>Столбцы: <input type="number" id="cols" value="3" min="1" max="10"></label>
         <button onclick="createMatrix()">Создать матрицу</button>
-        <button onclick="Clear()">Очистить все</button>
+        <button onclick="clearAll()">Очистить все</button>
       </div>
 
       <div id="matrix-container"></div>
@@ -30,9 +30,8 @@
         <h3>Базовые операции</h3>
         <button onclick="add()">Сложить две матрицы</button>
         <button onclick="subtract()">Вычесть матрицы</button>
-        <button onclick="transposeMatrix()">Транспонирование</button>
+        <button onclick="transpose()">Транспонирование</button>
         <button onclick="multiply()">Умножить матрицы</button>
-        <button onclick="multiplyByScalar()">Умножить на число</button>
         
         <h3>Вычисления:</h3>
         <button onclick="Rank()">Найти ранг матрицы</button>
