@@ -223,3 +223,9 @@ function gauss() {
 
   document.getElementById('result-output').innerHTML = steps;
 }
+function clearAll() {
+  document.getElementById('matrix-container').innerHTML = '';
+  document.getElementById('result-output').innerHTML = '';
+  document.getElementById('rows').value = '2';
+  document.getElementById('cols').value = '2';
+}
