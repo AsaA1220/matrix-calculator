@@ -24,6 +24,15 @@ function setResultHTML(html) {
   }
 }
 
+function showError(msg) {
+  const html = 
+    '<div style="background:#ffe5e5; border-left:4px solid #dc3545; padding:14px; border-radius:10px;">' +
+      '<strong style="color:#dc3545">❗ Ошибка</strong><br>' +
+      '<span style="color:#333">' + msg + '</span>' +
+    '</div>';
+  setResultHTML(html);
+}
+
 //глобальная переменная для пошаговой визуализации
 let st = {
   arr: [],
@@ -84,11 +93,11 @@ function createMatrix(containerId, rowsId, colsId, prefix) {
 
 //проверка размера
   if (!Number.isFinite(rows) || !Number.isFinite(cols)) {
-  alert("Введите размеры матрицы");
+  showError("Введите размеры матрицы");
   return;
 }
   if (rows < 1 || rows > 12 || cols < 1 || cols > 12) {
-    alert("Размер матрицы должен быть от 1 до 12");
+    showError("Размер матрицы должен быть от 1 до 12");
     return;
   }
 
@@ -160,14 +169,14 @@ function add() {
   const A = getMatrix("A", "rowsA", "colsA");
   const B = getMatrix("B", "rowsB", "colsB");
   if (!A || !B) {
-    alert("Сначала создайте матрицы A и B");
+    showError("Сначала создайте матрицы A и B");
     return;
   }
 
   const rA = A.length, cA = A[0].length;
   const rB = B.length, cB = B[0].length;
   if (rA !== rB || cA !== cB) {
-    alert("Для сложения размеры A и B должны совпадать");
+    showError("Для сложения размеры A и B должны совпадать");
     return;
   }
 
@@ -187,14 +196,14 @@ function subtract() {
   const A = getMatrix("A", "rowsA", "colsA");
   const B = getMatrix("B", "rowsB", "colsB");
   if (!A || !B) {
-    alert("Сначала создайте матрицы A и B");
+    showError("Сначала создайте матрицы A и B");
     return;
   }
 
   const rA = A.length, cA = A[0].length;
   const rB = B.length, cB = B[0].length;
   if (rA !== rB || cA !== cB) {
-    alert("Для вычитания размеры A и B должны совпадать");
+    showError("Для вычитания размеры A и B должны совпадать");
     return;
   }
 
@@ -216,7 +225,7 @@ function mult() {
   const A = getMatrix("A", "rowsA", "colsA");
   const B = getMatrix("B", "rowsB", "colsB");
   if (!A || !B) {
-    alert("Сначала создайте матрицы A и B");
+    showError("Сначала создайте матрицы A и B");
     return;
   }
 
@@ -225,7 +234,7 @@ function mult() {
 
   //проверка: столбцы A должны равняться строкам B
   if (cA !== rB) {
-    alert("Для умножения нужно: столбцы A = строки B");
+    showError("Для умножения нужно: столбцы A = строки B");
     return;
   }
 
@@ -250,7 +259,7 @@ function transposeA() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
   if (!A) {
-    alert("Сначала создайте матрицу A");
+    showError("Сначала создайте матрицу A");
     return;
   }
 
@@ -275,7 +284,7 @@ function multiplyScalarA() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
   if (!A) {
-    alert("Сначала создайте матрицу A");
+    showError("Сначала создайте матрицу A");
     return;
   }
 
@@ -283,7 +292,7 @@ function multiplyScalarA() {
   if (num === null) return;
   num = parseFloat(num);
   if (isNaN(num)) {
-    alert("Некорректное число");
+    showError("Некорректное число");
     return;
   }
 
@@ -304,7 +313,7 @@ function det() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
   if (!A) {
-    alert("Сначала создайте матрицу A");
+    showError("Сначала создайте матрицу A");
     return;
   }
 
@@ -312,7 +321,7 @@ function det() {
   const m = A[0].length;
 
   if (n !== m) {
-    alert("Определитель считается только для квадратной матрицы");
+    showError("Определитель считается только для квадратной матрицы");
     return;
   }
 
@@ -394,7 +403,10 @@ function det() {
 function Rank() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
-  if (!A) return alert("Сначала создайте матрицу A");
+  if (!A) {
+    showError("Сначала создайте матрицу A");
+    return;
+  }
 
   st.mode = "rank";
   const a = clone2D(A);
@@ -470,10 +482,16 @@ function Rank() {
 function inverseA() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
-  if (!A) return alert("Сначала создайте матрицу A");
+  if (!A) {
+    showError("Сначала создайте матрицу A");
+    return;
+  }
 
   const n = A.length;
-  if (A[0].length !== n) return alert("Обратная матрица только для квадратной");
+  if (A[0].length !== n) {
+    showError("Обратная матрица только для квадратной");
+    return;
+  }
 
   st.mode = "inverse";
 
@@ -631,11 +649,17 @@ function Gauss() {
   clearSteps();
 
   const A = getMatrix("A", "rowsA", "colsA");
-  if (!A) return alert("Сначала создайте матрицу A");
+  if (!A) {
+    showError("Сначала создайте матрицу A");
+    return;
+  }
 
   const n = A.length;
   const m = A[0].length;
-  if (m !== n + 1) return alert("Для СЛАУ матрица A должна быть размера n×(n+1)");
+  if (m !== n + 1) {
+    showError("Для СЛАУ матрица A должна быть размера n×(n+1)");
+    return;
+  }
 
   st.mode = "gauss";
 
@@ -807,7 +831,7 @@ function Gauss() {
 function randomMatrixA() {
   const A = getMatrix("A", "rowsA", "colsA");
   if (!A) {
-    alert("Сначала создайте матрицу A");
+    showError("Сначала создайте матрицу A");
     return;
   }
   
@@ -830,7 +854,7 @@ function randomMatrixA() {
 function randomMatrixB() {
   const B = getMatrix("B", "rowsB", "colsB");
   if (!B) {
-    alert("Сначала создайте матрицу B");
+    showError("Сначала создайте матрицу B");
     return;
   }
   
