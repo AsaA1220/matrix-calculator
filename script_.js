@@ -83,6 +83,10 @@ function createMatrix(containerId, rowsId, colsId, prefix) {
   const cols = readInt(colsId);
 
 //проверка размера
+  if (!Number.isFinite(rows) || !Number.isFinite(cols)) {
+  alert("Введите размеры матрицы");
+  return;
+}
   if (rows < 1 || rows > 12 || cols < 1 || cols > 12) {
     alert("Размер матрицы должен быть от 1 до 12");
     return;
@@ -797,4 +801,65 @@ function Gauss() {
   st.ans = out;
   st.i = 0;
   renderStep();
+}
+
+//случайная матрица (для тестов)
+function randomMatrixA() {
+  const A = getMatrix("A", "rowsA", "colsA");
+  if (!A) {
+    alert("Сначала создайте матрицу A");
+    return;
+  }
+  
+  const rows = readInt("rowsA");
+  const cols = readInt("colsA");
+  
+  //заполняем случайными числами
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      const val = Math.floor(Math.random() * 21) - 10;
+      const inp = document.getElementById("A-" + i + "-" + j);
+      if (inp) inp.value = val;
+    }
+  }
+  
+  clearSteps();
+  setResultHTML("<p>✅Матрица A заполнена случайными числами</p>");
+}
+
+function randomMatrixB() {
+  const B = getMatrix("B", "rowsB", "colsB");
+  if (!B) {
+    alert("Сначала создайте матрицу B");
+    return;
+  }
+  
+  const rows = readInt("rowsB");
+  const cols = readInt("colsB");
+  
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      const val = Math.floor(Math.random() * 21) - 10;
+      const inp = document.getElementById("B-" + i + "-" + j);
+      if (inp) inp.value = val;
+    }
+  }
+  
+  clearSteps();
+  setResultHTML("<p>✅Матрица B заполнена случайными числами</p>");
+}
+
+//Инициализация при загрузке страницы (один раз)
+window.addEventListener("load", function() {
+  createMatrixA();
+  createMatrixB();
+});
+
+//совместимость с кнопками из index.html
+function multiplyMatrices() {
+  mult();
+}
+
+function calculateDeterminant() {
+  det();
 }
