@@ -872,7 +872,6 @@ function randomMatrixB() {
   clearSteps();
   setResultHTML("<p>✅Матрица B заполнена случайными числами</p>");
 }
-
 //Инициализация при загрузке страницы (один раз)
 window.addEventListener("load", function() {
   createMatrixA();
