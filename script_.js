@@ -1,8 +1,11 @@
 //Утилиты
+
+//читает число из input элемента
 function readInt(id) {
   return parseInt(document.getElementById(id).value, 10);
 }
 
+//проверяет не равно ли число почти нулю, чтобы избежать ошибок округления
 function nearlyZero(x) {
   return Math.abs(x) < 1e-10;
 }
@@ -21,7 +24,7 @@ function setResultHTML(html) {
   }
 }
 
-//глобально для шагов
+//глобальная переменная для пошаговой визуализации
 let st = {
   arr: [],
   i: 0,
@@ -36,7 +39,7 @@ function clearSteps() {
   st.mode = "";
 }
 
-//рисуем матрицу
+//рисуем матрицу, opt - это параметры: pr (pivot), hr (highlight row), sepCol (разделитель)
 function matHTML(mat, opt) {
   opt = opt || {};
   const pr = opt.pr || null;
@@ -44,15 +47,21 @@ function matHTML(mat, opt) {
   const sepCol = (opt.sepCol === 0 || opt.sepCol) ? opt.sepCol : null;
 
   let html = '<table class="matrix-table">';
+
   for (let i = 0; i < mat.length; i++) {
     html += "<tr" + ((hr === i) ? ' class="rowhl"' : "") + ">";
+
     for (let j = 0; j < mat[i].length; j++) {
       const v = mat[i][j];
       const ok = Number.isFinite(v);
+
+      //форматируем число: очень маленькие -> 0
       const txt = ok ? (Math.abs(v) < 1e-12 ? "0" : v.toFixed(4)) : String(v);
 
       let cls = "";
+      //если это pivot, подсвечиваем красным
       if (pr && pr[0] === i && pr[1] === j) cls += " pivot";
+      //если это разделитель (для расширенной матрицы)
       if (sepCol !== null && j === sepCol) cls += " sep";
 
       html += '<td class="' + cls.trim() + '">' + txt + "</td>";
@@ -68,11 +77,12 @@ function showMatrix(mat) {
   setResultHTML(matHTML(mat));
 }
 
-//Создание матриц
+//Создает таблицу с ipnut элементами для ввода матрицы
 function createMatrix(containerId, rowsId, colsId, prefix) {
   const rows = readInt(rowsId);
   const cols = readInt(colsId);
 
+//проверка размера
   if (rows < 1 || rows > 12 || cols < 1 || cols > 12) {
     alert("Размер матрицы должен быть от 1 до 12");
     return;
@@ -84,6 +94,7 @@ function createMatrix(containerId, rowsId, colsId, prefix) {
   const table = document.createElement("table");
   table.className = "matrix-table";
 
+//создаем ячейки
   for (let i = 0; i < rows; i++) {
     const tr = table.insertRow();
     for (let j = 0; j < cols; j++) {
@@ -92,7 +103,7 @@ function createMatrix(containerId, rowsId, colsId, prefix) {
       input.type = "number";
       input.step = "any";
       input.value = "0";
-      input.id = prefix + "-" + i + "-" + j;
+      input.id = prefix + "-" + i + "-" + j; //типа A-0-0, A-0-1
       td.appendChild(input);
     }
   }
@@ -100,6 +111,7 @@ function createMatrix(containerId, rowsId, colsId, prefix) {
   container.appendChild(table);
 }
 
+//читает матрицу из input элементов
 function getMatrix(prefix, rowsId, colsId) {
   const rows = readInt(rowsId);
   const cols = readInt(colsId);
@@ -131,6 +143,7 @@ function clearAll() {
   setResultHTML("");
   clearSteps();
 
+//сбрасываем значения
   document.getElementById("rowsA").value = "3";
   document.getElementById("colsA").value = "3";
   document.getElementById("rowsB").value = "3";
@@ -142,12 +155,19 @@ function add() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
   const B = getMatrix("B", "rowsB", "colsB");
-  if (!A || !B) return alert("Сначала создайте матрицы A и B");
+  if (!A || !B) {
+    alert("Сначала создайте матрицы A и B");
+    return;
+  }
 
   const rA = A.length, cA = A[0].length;
   const rB = B.length, cB = B[0].length;
-  if (rA !== rB || cA !== cB) return alert("Для сложения размеры A и B должны совпадать");
+  if (rA !== rB || cA !== cB) {
+    alert("Для сложения размеры A и B должны совпадать");
+    return;
+  }
 
+//суммируем поэлементно
   const R = [];
   for (let i = 0; i < rA; i++) {
     const row = [];
@@ -162,38 +182,58 @@ function subtract() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
   const B = getMatrix("B", "rowsB", "colsB");
-  if (!A || !B) return alert("Сначала создайте матрицы A и B");
+  if (!A || !B) {
+    alert("Сначала создайте матрицы A и B");
+    return;
+  }
 
   const rA = A.length, cA = A[0].length;
   const rB = B.length, cB = B[0].length;
-  if (rA !== rB || cA !== cB) return alert("Для вычитания размеры A и B должны совпадать");
+  if (rA !== rB || cA !== cB) {
+    alert("Для вычитания размеры A и B должны совпадать");
+    return;
+  }
 
   const R = [];
   for (let i = 0; i < rA; i++) {
     const row = [];
-    for (let j = 0; j < cA; j++) row.push(A[i][j] - B[i][j]);
+    for (let j = 0; j < cA; j++) {
+      row.push(A[i][j] - B[i][j]);
+    }
     R.push(row);
   }
 
   setResultHTML("<h3>A - B</h3>" + matHTML(R));
 }
 
-function multiplyMatrices() {
+//умножение матриц: A(m*n) * B(n*p) = C(m*p)
+function mult() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
   const B = getMatrix("B", "rowsB", "colsB");
-  if (!A || !B) return alert("Сначала создайте матрицы A и B");
+  if (!A || !B) {
+    alert("Сначала создайте матрицы A и B");
+    return;
+  }
 
   const rA = A.length, cA = A[0].length;
   const rB = B.length, cB = B[0].length;
-  if (cA !== rB) return alert("Для умножения нужно: столбцы A = строки B");
+
+  //проверка: столбцы A должны равняться строкам B
+  if (cA !== rB) {
+    alert("Для умножения нужно: столбцы A = строки B");
+    return;
+  }
 
   const R = [];
   for (let i = 0; i < rA; i++) {
     const row = [];
     for (let j = 0; j < cB; j++) {
+      //c[i][j] = сумма произведений
       let s = 0;
-      for (let k = 0; k < cA; k++) s += A[i][k] * B[k][j];
+      for (let k = 0; k < cA; k++) {
+        s += A[i][k] * B[k][j];
+      }
       row.push(s);
     }
     R.push(row);
@@ -205,54 +245,76 @@ function multiplyMatrices() {
 function transposeA() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
-  if (!A) return alert("Сначала создайте матрицу A");
+  if (!A) {
+    alert("Сначала создайте матрицу A");
+    return;
+  }
 
   const r = A.length;
   const c = A[0].length;
   const T = [];
 
+//меняем строки и столбцы местами
   for (let j = 0; j < c; j++) {
     const row = [];
-    for (let i = 0; i < r; i++) row.push(A[i][j]);
+    for (let i = 0; i < r; i++) {
+      row.push(A[i][j]);
+    }
     T.push(row);
   }
 
   setResultHTML("<h3>Aᵀ</h3>" + matHTML(T));
 }
 
+//умножение матрицы на число
 function multiplyScalarA() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
-  if (!A) return alert("Сначала создайте матрицу A");
+  if (!A) {
+    alert("Сначала создайте матрицу A");
+    return;
+  }
 
   let num = prompt("Введите число:");
   if (num === null) return;
   num = parseFloat(num);
-  if (isNaN(num)) return alert("Некорректное число");
+  if (isNaN(num)) {
+    alert("Некорректное число");
+    return;
+  }
 
   const R = [];
   for (let i = 0; i < A.length; i++) {
     const row = [];
-    for (let j = 0; j < A[i].length; j++) row.push(A[i][j] * num);
+    for (let j = 0; j < A[i].length; j++) {
+      row.push(A[i][j] * num);
+    }
     R.push(row);
   }
 
   setResultHTML("<h3>A * " + num + "</h3>" + matHTML(R));
 }
 
-//det с пошаговой визуализацией
-function calculateDeterminant() {
+//определитель
+function det() {
   clearSteps();
   const A = getMatrix("A", "rowsA", "colsA");
-  if (!A) return alert("Сначала создайте матрицу A");
+  if (!A) {
+    alert("Сначала создайте матрицу A");
+    return;
+  }
 
   const n = A.length;
   const m = A[0].length;
-  if (n !== m) return alert("Определитель считается только для квадратной матрицы");
+
+  if (n !== m) {
+    alert("Определитель считается только для квадратной матрицы");
+    return;
+  }
 
   st.mode = "det";
   const a = clone2D(A);
-  let swaps = 0;
+  let swaps = 0; //счетчик перестановок строк
 
   pushStep("<strong>Вычисление определителя</strong> методом приведения к треугольному виду.<br>Исходная матрица:", a);
 
@@ -667,7 +729,7 @@ function Gauss() {
 
   pushStep("✅Противоречий нет. Обратный ход:", a, { sepCol: n });
 
-  // обратный ход
+  //обратный ход
   const x = new Array(n).fill(0);
 
   for (let i = n - 1; i >= 0; i--) {
@@ -707,7 +769,7 @@ function Gauss() {
 
   pushStep("🎉Обратный ход завершён", a, { sepCol: n });
 
-  // проверка
+  //проверка
   const chk = [];
   for (let i = 0; i < n; i++) {
     let left = 0;
