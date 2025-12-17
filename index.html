@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Интерактивный визуализатор матричных операций</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_.css">
   </head>
 
   <body>
     <div class="container">
       <h1>Калькулятор матриц</h1>
 
-      <!--Ввод размера первой матрицы-->
-      <div class="instr">
+      <!--Инструкция-->
+      <div class="instructions">
         <p><strong>Инструкция:</strong>Введите размер матрицы, нажмите "создать", заполните ячейки и выберите нужную операцию</p>
         <p class="small">
         Для СЛАУ используйте <b>матрицу A</b> как расширенную: размер nx(n+1).</p>
@@ -20,19 +20,18 @@
 
       <div class="input-section">
         <h2>Шаг 1: Создание матрицы</h2>
-        
         <div class = "grid">
           <div class="card">
             <h3>Матрица А</h3>
-            <label>Строки: <input type="number" id="rowsA" value="3" min="1" max="10"></label>
-            <label>Столбцы: <input type="number" id="colsA" value="3" min="1" max="10"></label>
+            <label>Строки: <input type="number" id="rowsA" value="3" min="1" max="12"></label>
+            <label>Столбцы: <input type="number" id="colsA" value="3" min="1" max="12"></label>
             <button type="button" onclick="createMatrixA()">Создать A</button>
           </div>
 
           <div class="card">
           <h3>Матрица B</h3>
-          <label>Строки: <input type="number" id="rowsB" value="3" min="1" max="10"></label>
-          <label>Столбцы: <input type="number" id="colsB" value="3" min="1" max="10"></label>
+          <label>Строки: <input type="number" id="rowsB" value="3" min="1" max="12"></label>
+          <label>Столбцы: <input type="number" id="colsB" value="3" min="1" max="12"></label>
           <button type="button" onclick="createMatrixB()">Создать B</button>
         </div>
       </div>
@@ -56,7 +55,6 @@
 
     <div class="operations">
       <h2>Шаг 2: Операции</h2>
-
       <h3>Базовые</h3>
       <button type="button" onclick="add()">A + B</button>
       <button type="button" onclick="subtract()">A - B</button>
@@ -67,6 +65,7 @@
       <h3>Вычисления (по A)</h3>
       <button type="button" onclick="calculateDeterminant()">Определитель det(A)</button>
       <button type="button" onclick="Rank()">Ранг rank(A)</button>
+      <button type="button" onclick="inverseA()">Обратная A</button>
 
       <h3>СЛАУ (по расширенной A)</h3>
       <button type="button" onclick="Gauss()">Метод Гаусса</button>
@@ -85,6 +84,6 @@
       <p>Автор: AsaA1220 | <a href="https://github.com/AsaA1220/matrix-calculator" target="_blank">GitHub</a></p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script_.js"></script>
   </body>
 </html>

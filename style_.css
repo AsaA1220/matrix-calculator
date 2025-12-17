@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter", "Segoe UI", sans-serif;
   line-height: 1.6;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
@@ -19,6 +19,12 @@ body {
   padding: 24px;
   border-radius: 14px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
@@ -80,6 +86,12 @@ h3 {
   border: 1px solid #eee;
   border-radius: 12px;
   padding: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 label {
@@ -97,11 +109,13 @@ input[type="number"] {
   border-radius: 6px;
   font-size: 16px;
   margin-left: 6px;
+  transition: border-color 0.2s ease, 0.2s ease;
 }
 
 input[type="number"]:focus {
   outline: none;
   border-color: #667eea;
+  background: #f0f4ff;
 }
 
 .actions-row {
@@ -116,21 +130,27 @@ button {
   border-radius: 9px;
   cursor: pointer;
   font-size: 15px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   margin: 4px 4px 4px 0;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
 button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
 button:active {
-  transform: translateY(0);
+  transform: translateY(-1px);
 }
 
 button.danger {
-  background: #dc3545;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+button.danger:hover {
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
 }
 
 .operations {
@@ -147,6 +167,7 @@ button.danger {
 
 .matrix-table td {
   padding: 5px;
+  transition: all 0.3s ease;
 }
 
 .matrix-table input {
@@ -155,14 +176,16 @@ button.danger {
   padding: 6px;
   text-align: center;
   font-size: 16px;
-  border: 2px solid #ddd;   /* исправлено */
+  border: 2px solid #ddd;
   border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .matrix-table input:focus {
   outline: none;
   border-color: #667eea;
   background-color: #f0f4ff;
+  transform: scale(1.05);
 }
 
 #result {
@@ -172,6 +195,12 @@ button.danger {
   border-radius: 12px;
   border-left: 4px solid #667eea;
   min-height: 90px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 #result-output table.matrix-table td {
@@ -181,14 +210,86 @@ button.danger {
   border-radius: 6px;
 }
 
+/* шаги */
+.step-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 8px 0 12px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.step-bar .badge {
+  font-size: 13px;
+  color: #333;
+  background: #f0f4ff;
+  border: 1px solid #dde6ff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+/* pivot красный */
+.pivot {
+  background: #ffe5e5 !important;
+  border: 2px solid #dc3545 !important;
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* подсветка строки */
+.rowhl td {
+  background: #fffacd !important;
+  transition: 0.3s ease;
+}
+
+/* разделитель */
+.sep {
+  border-left: 3px solid #667eea !important;
+}
+
+.step-text {
+  margin: 8px 0;
+  color: #222;
+  line-height: 1.8;
+}
+
+.step-text code {
+  background: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  font-family: 'Courier New', monospace;
+}
+
 .info {
   max-width: 1100px;
   margin: 12px auto 0;
   color: #fff;
   padding: 8px 10px;
+  text-align: center;
 }
 
 .info a {
   color: #fff;
   text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.info a:hover {
+  opacity: 0.8;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #eee;
+  margin: 16px 0;
 }
