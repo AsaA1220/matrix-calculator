@@ -385,8 +385,10 @@ function det() {
   }
 
   let det = (swaps % 2 === 0) ? 1 : -1;
-  for (let i = 0; i < n; i++) det *= a[i][i];
-
+  for (let i = 0; i < n; i++) {
+    det *= a[i][i];
+    return det;
+  }
   pushStep("Матрица приведена к треугольному виду", a);
 
   st.ans =
