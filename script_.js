@@ -649,7 +649,6 @@ function showAllSteps() {
 //СЛАУ (Гаусс)
 function Gauss() {
   clearSteps();
-
   const A = getMatrix("A", "rowsA", "colsA");
   if (!A) {
     showError("Сначала создайте матрицу A");
@@ -668,10 +667,7 @@ function Gauss() {
   const a = clone2D(A);
 
   pushStep(
-    "<strong>Решение СЛАУ методом Гаусса</strong><br>Исходная расширенная матрица [A|b]:",
-    a,
-    { sepCol: n }
-  );
+    "<strong>Решение СЛАУ методом Гаусса</strong><br>Исходная расширенная матрица [A|b]:", a, { sepCol: n });
 
   //прямой ход
   for (let k = 0; k < n; k++) {
