@@ -2,7 +2,7 @@
 
 Описание проекта
 
-Студенты технических специальностей ежедневно сталкиваются с задачами по линейной алгебре: умножение матриц, вычисление определителей, решение СЛАУ методом Гаусса. Обычно на это уходит 20-30 минут, а риск допустить арифметическую ошибку достигает 30-40% - результат всей работы оказывается неверным. Существующие бесплатные калькуляторы либо не показывают промежуточные шаги, либо не дают текстовых пояснений к каждому преобразованию, а подписка на платные сервисы (Wolfram Alpha Pro) стоит 707 руб./месяц.
+Студенты технических специальностей ежедневно сталкиваются с задачами по линейной алгебре: умножение матриц, вычисление определителей, решение СЛАУ методом Гаусса. Обычно на это уходит 20-30 минут, а риск допустить арифметическую ошибку высокий. Существующие бесплатные калькуляторы либо не показывают промежуточные шаги, либо не дают текстовых пояснений к каждому преобразованию, а подписка на платные сервисы (Wolfram Alpha Pro) стоит 707 руб./месяц.
 
 Решение
 
@@ -26,44 +26,46 @@
 
 Технологии и инструменты:
 
-- HTML5;
-- CSS3;
-- JavaScript (ES6+);
+- HTML5 - структура страницы;
+- CSS3 - оформление интерфейса;
+- JavaScript - вся логика вычислений;
+- MathJax - отображение математических формул.
 
-Инструменты разработки: Visual Studio Code, Git и GitHub для управления кодом, Google Chrome для тестирования, Draw.io для построения блок-схем алгоритмов.
+Инструменты разработки:
+Visual Studio Code, Git и GitHub для управления кодом, Google Chrome для тестирования.
 
 
-# Interactive Matrix Operations Vizualizer
 
-Project description
+# Interactive Matrix Operations Visualizer
 
-Students of technical specialties face daily challenges with linear algebra: matrix multiplication, determinant calculation, solving systems of linear equations using Gaussian elimination. This typically takes 20-30 minutes, with a 30-40% risk of arithmetic errors that invalidate the entire solution. Existing free calculators either don't show intermediate steps or lack textual explanations for each transformation, while paid services (Wolfram Alpha Pro) cost 10$/month.
+Project Description
+
+Students of technical specialties face daily challenges with linear algebra: matrix multiplication, determinant calculation, solving systems of linear equations using Gaussian elimination. This typically takes 20-30 minutes, and the risk of making arithmetic errors is high. Existing free calculators either don't show intermediate steps or don't provide textual explanations for each transformation, while paid services (Wolfram Alpha Pro) cost approximately $10/month.
 
 Solution
 
-A free web calculator that doesn't just provide results but shows each calculation step with explanations of what's happening.
- 
-Main matrix operations:
+A free web calculator that doesn't just provide results but shows each calculation step and explains what's happening (how the matrix changes at each stage, with textual comments for each transformation).
 
-- matrix addition and subtraction;
-- scalar multiplication;
-- matrix multiplication;
-- transposition;
-- determinant calculation;
-- inverse matrix calculation;
-- matrix rank calculation.
+Main Matrix Operations:
 
-Solving systems of linear equations:
+Matrix addition and subtraction;
+Matrix scalar multiplication;
+Matrix multiplication;
+Transposition;
+Determinant calculation;
+Finding the inverse matrix;
+Matrix rank calculation.
 
-- Gaussian elimination with step-by-step visualization;
-- solution type determination (unique/infinitely many/no solutions);
-- textual explanations for each step;
-- solution verification by substitution.
+Solving Systems of Linear Equations:
 
-Technologies and tools:
+Gaussian elimination with step-by-step visualization;
+Determining the solution type (unique/infinitely many/no solutions);
+Textual explanations for each step.
+Technologies and Tools:
+HTML5 - page structure;
+CSS3 - interface styling;
+JavaScript - all calculation logic;
+MathJax - rendering mathematical formulas.
 
-- HTML5;
-- CSS3;
-- JavaScript (ES6+);
-
-Development tools: Visual Studio Code, Git and GitHub for version control, Google Chrome for testing, Draw.io for algorithm flowcharts.
+Development Tools:
+Visual Studio Code, Git and GitHub for code management, Google Chrome for testing.
